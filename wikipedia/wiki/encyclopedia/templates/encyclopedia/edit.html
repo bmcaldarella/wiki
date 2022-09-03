@@ -1,0 +1,39 @@
+
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+   
+{% endblock %}
+
+{% block body %}
+
+    <h1>EDIT PAGE</h1><br />
+    {% if message %}
+        <div id="message">
+           {{ message }}
+        </div>
+        <br />
+    {% endif %}
+    <form action="{% url 'edit' title %}" method="POST">
+        {% csrf_token %}
+        <label for="id_title">Title:</label> 
+        <input type="text" name="title" value="{{ title }}" id="id_title" >
+        <label for="id_content">Content:</label>
+        <textarea name="content"  required id="id_content">{{ content }}</textarea>
+         <a href="{% url 'edit' title %}"><input class="boton" type="submit" value="Save"></a>
+                 <style>
+
+
+        .boton{
+            color:white;
+            background-color:rgb(54,121,246);
+            border-radius:7px;
+            height:40px;
+            width:90px
+        }
+        </style>
+
+
+    </form>
+    
+{% endblock %}

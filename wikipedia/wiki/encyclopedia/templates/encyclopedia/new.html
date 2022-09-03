@@ -1,0 +1,35 @@
+
+
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+   
+    {% if error == 1 %}
+        <h1>The page is already exist</h1>
+    {% else %}
+        <form action="{% url 'new' %}" method="POST" autocomplete="off" >
+            {% csrf_token %}
+            
+            {{ form }}
+            
+            
+            <input class="boton" type="submit" value="Save">
+           
+        </form>
+        <style>
+        .boton{
+            color:white;
+            background-color:rgb(54,121,246);
+            border-radius:7px;
+            height:40px;
+            width:90px
+
+
+        }
+        </style>
+    {% endif %}
+{% endblock %}
